@@ -2,7 +2,7 @@ import Hamburger from './Hamburger'
 
 function HeaderWrapper() {
   return (
-    <div className=''>
+    <div>
       <Hamburger/>
     </div>
   )

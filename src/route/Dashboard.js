@@ -1,9 +1,12 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import {siteContext} from "../context/AppContext"
 
-function UserPage() {
+function Dashboard() {
+  const {user} = useContext(siteContext)
+
   return (
     <div className='d-flex flex-column container align-items-center justify-content-center p-5'>
-      <h1>Hello User</h1>
+      <h1>Hello {user?.email}</h1>
       <p>Welcome to your profile</p>
       <p>Your current role is "Reader"</p>
       <h2>Here are the articles you wrote</h2>
@@ -19,4 +22,4 @@ function UserPage() {
   )
 }
 
-export default UserPage
+export default Dashboard

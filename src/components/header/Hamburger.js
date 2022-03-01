@@ -1,12 +1,28 @@
-import { useContext } from 'react'
+import { useContext} from 'react'
 import {siteContext} from "../../context/AppContext"
 import { Link } from 'react-router-dom'
 import { Container, Offcanvas, Navbar,  Nav} from 'react-bootstrap'
+import {signOut, onAuthStateChanged} from "firebase/auth";
 
 function Hamburger() {
 
-  const appContext = useContext(siteContext);
-  console.log(appContext.loggedIn)
+  const {setUser, user, AuthKey} = useContext(siteContext);
+
+  onAuthStateChanged(AuthKey, (currentUser)=>{
+    setUser(currentUser)
+  })
+
+
+  const signOutUser = async ()=>{
+    try{
+      await signOut(AuthKey);
+    }catch(err){
+      console.log(err);
+    }
+    
+  }
+
+  
 
   return (<>
 
@@ -20,25 +36,31 @@ function Hamburger() {
       placement="start"
     >
       <Offcanvas.Header closeButton>
-        <Offcanvas.Title id="offcanvasNavbarLabel" className='display-3'>Menu</Offcanvas.Title>
+        <Offcanvas.Title id="offcanvasNavbarLabel" className='text-wrap display-3'>Menu </Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
         <Nav className="justify-content-end flex-grow-1 pe-3 display-6">
           <Link to="/" className='text-decoration-none text-dark mb-3'>Home</Link>
           <div className="dropdown-divider"></div>
           {
-            (appContext.loggedIn ===false)?
+            (user === null)?
             <>
               <Link to="/auth" className='text-decoration-none text-dark mb-3'>Login</Link>
               <div className="dropdown-divider"></div>
             </>:
             <>
-              <Link to="/auth" className='text-decoration-none text-dark mb-3'>Logout</Link>
+              <Link to="/auth" onClick={signOutUser} className='text-decoration-none text-dark mb-3'>Logout</Link>
               <div className="dropdown-divider"></div>
             </>
           }
+          {
+            (user !== null)?
+            <Link to="/Dashboard" className='text-decoration-none text-dark'>Dashboard</Link>
+            :
+            <></>
+          }
           
-          <Link to="/admin" className='text-decoration-none text-dark'>User (Auth Needed) </Link>
+          
         </Nav>
       </Offcanvas.Body>
     </Navbar.Offcanvas>
