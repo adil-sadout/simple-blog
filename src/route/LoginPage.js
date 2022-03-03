@@ -25,7 +25,7 @@ function LoginPage() {
         <>{
           (isLoginPage === true)?
           <>
-            <p className='text-center display-1 pb-2'>Login</p>
+            <p className='text-break text-center display-1 pb-2'>Login</p>
             <LoginForm redirect={redirect} setIsLoginPage={setIsLoginPage} />
           </>
           :

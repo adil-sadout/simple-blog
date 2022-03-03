@@ -2,7 +2,7 @@ import React from 'react'
 
 function SingleArticle() {
   return (
-    <div>SingleArticle</div>
+    <div className='text-break '>SingleArticle</div>
   )
 }
 

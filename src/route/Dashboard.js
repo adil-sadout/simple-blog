@@ -35,7 +35,7 @@ function Dashboard() {
       {
       (user !== null) ?
       <>
-        <div className='d-flex flex-column container align-items-center justify-content-center p-5'>
+        <div className='text-break d-flex flex-column container align-items-center justify-content-center p-5'>
           <h1>Hello {user?.email}</h1>
           <div className='w-100'>
             <CreateArticle redirect={redirect} />
@@ -49,7 +49,7 @@ function Dashboard() {
               {userArticles.map(post =>{
                 return (
                   <li className='d-flex justify-content-between align-items-center my-2 list-group-item' key={post?.id}>
-                    <p className='mx-1 fs-1 w-75 text-break'>{post?.title}</p>
+                    <p className='mx-1 fs-1 w-75'>{post?.title}</p>
                     <div className='w-25'>
                       <button className='btn p-0 btn-warning m-1 w-100 disabled'>Edit</button>
                       <button onClick={() => {

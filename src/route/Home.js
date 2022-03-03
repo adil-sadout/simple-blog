@@ -8,7 +8,7 @@ function Home() {
 
 
   return (
-    <div className='text-center container d-flex flex-column justify-content-center align-items-center p-5'>
+    <div className='text-break text-center container d-flex flex-column justify-content-center align-items-center p-5'>
       <div className='py-5 my-5'>
         <h1>Welcome to the Simple Blog</h1>
         <p>This is a test blog where you can create an account, post an article, edit that article, and finally delete it.</p>
