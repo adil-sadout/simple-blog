@@ -8,7 +8,6 @@ function AppContext(props) {
   
   const articlesCollectionRef = collection(db, "articles")
   const [user, setUser] = useState(null);
-  const [action, setAction] = useState(false);
   const [allArticles, setAllArticles] = useState([]);
   const [userArticles, setUserArticles] = useState([]);
 
@@ -23,8 +22,6 @@ function AppContext(props) {
     setUserArticles,
     AuthKey,
     db,
-    action,
-    setAction,
     articlesCollectionRef
   }
   return (

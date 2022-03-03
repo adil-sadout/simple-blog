@@ -5,7 +5,7 @@ import CreateArticle from "../components/form/CreateArticle";
 import { doc, deleteDoc  } from 'firebase/firestore';
 
 function Dashboard() {
-  const {user, allArticles, setAllArticles, userArticles, setUserArticles, db, setAction, action} = useContext(siteContext);
+  const {user, allArticles, setAllArticles, userArticles, setUserArticles, db} = useContext(siteContext);
   const history = useNavigate();
 
 
@@ -54,7 +54,6 @@ function Dashboard() {
                       <button className='btn p-0 btn-warning m-1 w-100 disabled'>Edit</button>
                       <button onClick={() => {
                         deleteArticle(post?.id)
-                        setAction(!action)
                       }} className='btn p-0 btn-danger m-1 w-100'>X</button>
                     </div>
                     

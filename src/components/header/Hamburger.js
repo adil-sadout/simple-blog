@@ -7,7 +7,7 @@ import { getDocs } from 'firebase/firestore';
 
 function Hamburger() {
 
-  const {setUser, user, AuthKey, setAllArticles, articlesCollectionRef, action} = useContext(siteContext);
+  const {setUser, user, AuthKey, setAllArticles, articlesCollectionRef} = useContext(siteContext);
 
   onAuthStateChanged(AuthKey, (currentUser)=>{
     setUser(currentUser)
