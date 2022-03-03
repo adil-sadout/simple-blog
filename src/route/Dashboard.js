@@ -16,13 +16,11 @@ function Dashboard() {
   useEffect(()=>{
     const filteredList = allArticles.filter(article => article?.author?.email ===user.email )
     setUserArticles(filteredList)
-    console.log(filteredList)
   },[allArticles])
 
   
 
   const deleteArticle = async (id)=>{
-    console.log(id)
     const articleDoc = doc(db, "articles", `${id}`);
     await deleteDoc(articleDoc);
     const filteredList = allArticles.filter(article => article?.id !==id )
@@ -65,6 +63,7 @@ function Dashboard() {
             <p>No articles were found</p>
           }
         </div>
+        
       </>
       :
       <Navigate to="/auth" />

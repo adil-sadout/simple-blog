@@ -1,5 +1,6 @@
 import { useContext} from 'react'
 import {siteContext} from "../context/AppContext"
+import {Link} from "react-router-dom"
 
 function Home() {
 
@@ -8,7 +9,7 @@ function Home() {
 
 
   return (
-    <div className='text-break text-center container d-flex flex-column justify-content-center align-items-center p-5'>
+    <div className=' text-break text-center container d-flex flex-column justify-content-center align-items-center p-5'>
       <div className='py-5 my-5'>
         <h1>Welcome to the Simple Blog</h1>
         <p>This is a test blog where you can create an account, post an article, edit that article, and finally delete it.</p>
@@ -21,12 +22,11 @@ function Home() {
             (allArticles.length !==0) ?
             allArticles.map(post =>{
               return (
-                <div className='col-md-5 bg-light border pt-3' key={post?.id}>
+                <div className='col-md-5 bg-light border py-3' key={post?.id}>
                   <p className='lead'>By: {post?.author.email}</p>
                   <p className='h3'>{post?.title}</p>
-                  <p>{post?.article}</p>
-                  
-                  
+                  <p className=' text-truncate'>{post?.article}</p>
+                  <Link className='text-muted text-decoration-none' to={`/post/${post?.id}`}>Read More</Link>
                 </div>
               )
             })
