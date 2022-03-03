@@ -1,5 +1,5 @@
 import {useState, useContext} from 'react'
-import {addDoc, setDoc, doc, collection} from "firebase/firestore"
+import {setDoc, doc} from "firebase/firestore"
 import {siteContext} from "../../context/AppContext"
 
 
@@ -9,7 +9,7 @@ function CreateArticle({redirect}) {
     const [article, setArticle] = useState("");
     const {db, user, setAllArticles, allArticles} = useContext(siteContext);
 
-    const articlesCollectionRef = collection(db, "articles")
+    
     const createPost = async (e)=>{
         try{
 
