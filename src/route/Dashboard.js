@@ -14,7 +14,7 @@ function Dashboard() {
   };
 
   useEffect(()=>{
-    const filteredList = allArticles.filter(article => article?.author?.email ==="dzadzad@hello.com" )
+    const filteredList = allArticles.filter(article => article?.author?.email ===user.email )
     setUserArticles(filteredList)
     console.log(filteredList)
   },[allArticles])
