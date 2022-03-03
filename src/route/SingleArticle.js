@@ -14,7 +14,7 @@ function SingleArticle() {
       (currentArticle==="undefined")?
       <Navigate to="/auth" />:
       <div className='text-break text-center container d-flex flex-column justify-content-center  p-5 border'>
-        <p className='display-2'>{currentArticle?.title}</p>
+        <p className='display-6'>{currentArticle?.title}</p>
         <li className="dropdown-divider"></li>
         <p className='text-start fs-5'>{currentArticle?.article}</p>
       </div>

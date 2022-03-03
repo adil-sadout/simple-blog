@@ -1,7 +1,7 @@
 import {useState, useContext} from 'react'
 import {setDoc, doc} from "firebase/firestore"
 import {siteContext} from "../../context/AppContext"
-
+import { v4 as uuidv4 } from 'uuid';
 
 function CreateArticle({redirect}) {
 
@@ -11,11 +11,12 @@ function CreateArticle({redirect}) {
 
     
     const createPost = async (e)=>{
+      const newID = uuidv4();
         try{
 
           e.preventDefault();
 
-          await setDoc(doc(db, "articles", `${allArticles.length+1}`), {
+          await setDoc(doc(db, "articles", `${newID}`), {
             title,
               article,
               author: {
@@ -32,7 +33,7 @@ function CreateArticle({redirect}) {
                 id: user.uid,
               }
               ,
-              id:allArticles.length+1
+              id:newID
           }])
           redirect("/")
 
@@ -49,7 +50,7 @@ function CreateArticle({redirect}) {
       <form className='w-100'>
           <p className='display-6 text-center'>Create an article</p>
         <div className="mb-3">
-          <input type="text" placeholder='Add title' className="form-control" id="inputTitle" value={title} onChange={(e)=>setTitle(e.target.value) } />
+          <input type="text" placeholder='Add title'  maxlength="60" className="form-control" id="inputTitle" value={title} onChange={(e)=>setTitle(e.target.value) } />
         </div>
         <div className="mb-3">
           <textarea className="form-control" placeholder='Start writing...' id="textareaContent" value={article} onChange={(e)=>setArticle(e.target.value) }  />

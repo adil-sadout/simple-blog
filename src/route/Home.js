@@ -24,9 +24,8 @@ function Home() {
               return (
                 <div className='col-md-5 bg-light border py-3' key={post?.id}>
                   <p className='lead'>By: {post?.author.email}</p>
-                  <p className='h3'>{post?.title}</p>
-                  <p className=' text-truncate'>{post?.article}</p>
-                  <Link className='text-muted text-decoration-none' to={`/post/${post?.id}`}>Read More</Link>
+                  <p className='h4 text-truncate'>{post?.title}</p>
+                  <Link className='text-muted text-decoration-none' to={`/post/${post?.id}`}>Read Article</Link>
                 </div>
               )
             })
