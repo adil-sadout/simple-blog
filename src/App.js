@@ -24,7 +24,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/auth" element={<LoginPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/:articlename" element={<SingleArticle />} />
+          <Route path="/articlename" element={<SingleArticle />} />
         </Routes>
 
         

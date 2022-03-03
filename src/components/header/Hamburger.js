@@ -1,26 +1,37 @@
-import { useContext} from 'react'
+import { useContext, useEffect} from 'react'
 import {siteContext} from "../../context/AppContext"
 import { Link } from 'react-router-dom'
 import { Container, Offcanvas, Navbar,  Nav} from 'react-bootstrap'
-import {signOut, onAuthStateChanged} from "firebase/auth";
+import {signOut, onAuthStateChanged} from "firebase/auth"
+import { getDocs } from 'firebase/firestore';
 
 function Hamburger() {
 
-  const {setUser, user, AuthKey} = useContext(siteContext);
+  const {setUser, user, AuthKey, setAllArticles, articlesCollectionRef, action} = useContext(siteContext);
 
   onAuthStateChanged(AuthKey, (currentUser)=>{
     setUser(currentUser)
   })
 
-
+  
   const signOutUser = async ()=>{
     try{
       await signOut(AuthKey);
     }catch(err){
       console.log(err);
     }
-    
   }
+  
+  
+  useEffect(()=>{
+    
+    const getArticles = async ()=>{
+      const data = await getDocs(articlesCollectionRef);
+      setAllArticles(data.docs.map((doc)=> ({...doc.data(), id:doc.id})))
+    }
+    getArticles();
+    
+  },[user])
 
   
 

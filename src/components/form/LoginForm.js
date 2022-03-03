@@ -37,7 +37,7 @@ function LoginForm({setIsLoginPage, redirect}) {
           <label htmlFor="InputPassword1" className="form-label">Password</label>
           <input type="password" className="form-control" id="InputPassword1"  value={password} onChange={(e)=>setPassword(e.target.value)} />
         </div>
-        <button onClick={Login} type="submit" className="btn btn-primary">Login</button>
+        <button onClick={Login} type="submit" className="btn btn-success">Login</button>
       </form>
       <button onClick={()=>{
         

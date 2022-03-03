@@ -5,28 +5,35 @@ function SignupForm({setIsLoginPage, redirect}) {
 
   const {
     AuthKey,
-    setUser
+    setUser,
   } = useContext(siteContext);
 
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const Register = async (e) => {
     e.preventDefault();
-    try{
-      const userCredential = await createUserWithEmailAndPassword(AuthKey, email, password);
+    createUserWithEmailAndPassword(AuthKey, email, password)
+    .then(userCredential => {
       setUser(userCredential.currentUser)
       alert("Your Account Has Been Created");
+      return userCredential.currentUser
+    })
+    .then(
       redirect("/dashboard")
-    }catch(err){
+    )
+    .catch(err =>{
       console.log(err.message)
-    }
-
+    })
   }
+
+  
 
   return (
     <div className='d-flex h-100 flex-column justify-content-center align-items-center mx-auto w-75'>
       <form className='w-100'>
+      
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
           <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={(e)=>setEmail(e.target.value)}/>
@@ -36,7 +43,7 @@ function SignupForm({setIsLoginPage, redirect}) {
           <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e)=>setPassword(e.target.value)}/>
           <div id="passwordHelp" className="form-text">Make sure your password is unique</div>
         </div>
-        <button onClick={Register} type="submit" className="btn btn-primary">Create Account</button>
+        <button onClick={Register} type="submit" className="btn btn-success">Create Account</button>
       </form>
       <button onClick={()=>{
         setIsLoginPage(true)

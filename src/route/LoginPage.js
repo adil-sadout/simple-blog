@@ -1,5 +1,5 @@
 import {useState, useContext}  from 'react';
-import {useNavigate, Navigate} from "react-router-dom"
+import {Navigate, useNavigate} from "react-router-dom"
 import LoginForm from '../components/form/LoginForm';
 import SignupForm from '../components/form/SignupForm';
 import {siteContext} from "../context/AppContext"
@@ -35,7 +35,7 @@ function LoginPage() {
           </>
           
         }</>:
-        redirect("/")
+        <Navigate to="/dashboard" />
       }
       
       
