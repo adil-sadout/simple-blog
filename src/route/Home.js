@@ -21,9 +21,12 @@ function Home() {
             (allArticles.length !==0) ?
             allArticles.map(post =>{
               return (
-                <div className='col-md-5 bg-light border' key={post?.id}>
-                  <h3>{post?.title}</h3>
+                <div className='col-md-5 bg-light border pt-3' key={post?.id}>
+                  <p className='lead'>By: {post?.author.email}</p>
+                  <p className='h3'>{post?.title}</p>
                   <p>{post?.article}</p>
+                  
+                  
                 </div>
               )
             })
