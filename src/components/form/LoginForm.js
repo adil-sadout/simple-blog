@@ -10,7 +10,7 @@ function LoginForm({setIsLoginPage, redirect}) {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  
   
   const Login = async (e)=>{
     e.preventDefault();
@@ -18,16 +18,17 @@ function LoginForm({setIsLoginPage, redirect}) {
     try{
       const userCredential = await signInWithEmailAndPassword(AuthKey, email, password);
       setUser(userCredential.currentUser)
-      alert("Your Account Has logged in");
-      redirect("/dashboard")
+      
     }catch(err){
-      console.log(err.message)
+      
+      console.log(err)
     }
     
   }
 
   return (
     <div className='d-flex h-100 flex-column justify-content-center align-items-center mx-auto w-75'>
+      
       <form className='w-100'>
         <div className="mb-3">
           <label htmlFor="InputEmail1" className="form-label">Email address</label>

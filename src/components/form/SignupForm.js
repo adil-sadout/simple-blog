@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react'
 import {createUserWithEmailAndPassword} from "firebase/auth";
 import {siteContext} from  "../../context/AppContext"
-function SignupForm({setIsLoginPage, redirect}) {
+function SignupForm({setIsLoginPage}) {
 
   const {
     AuthKey,
@@ -17,12 +17,7 @@ function SignupForm({setIsLoginPage, redirect}) {
     createUserWithEmailAndPassword(AuthKey, email, password)
     .then(userCredential => {
       setUser(userCredential.currentUser)
-      alert("Your Account Has Been Created");
-      return userCredential.currentUser
     })
-    .then(
-      redirect("/dashboard")
-    )
     .catch(err =>{
       console.log(err.message)
     })
@@ -32,6 +27,7 @@ function SignupForm({setIsLoginPage, redirect}) {
 
   return (
     <div className='d-flex h-100 flex-column justify-content-center align-items-center mx-auto w-75'>
+
       <form className='w-100'>
       
         <div className="mb-3">
