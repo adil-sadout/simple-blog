@@ -1,8 +1,9 @@
-import React, {useContext, useEffect} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import {siteContext} from "../context/AppContext";
 import {Navigate, useNavigate} from "react-router-dom"
 import CreateArticle from "../components/form/CreateArticle";
 import { doc, deleteDoc  } from 'firebase/firestore';
+import UserArticle from "./UserArticle"
 
 function Dashboard() {
   const {user, allArticles, setAllArticles, userArticles, setUserArticles, db} = useContext(siteContext);
@@ -12,6 +13,8 @@ function Dashboard() {
   const redirect = path => {
     history(path);
   };
+
+  
 
   useEffect(()=>{
     const filteredList = allArticles.filter(article => article?.author?.email ===user.email )
@@ -46,15 +49,8 @@ function Dashboard() {
             <ul className='list-group'>
               {userArticles.map(post =>{
                 return (
-                  <li className='d-flex justify-content-between align-items-center my-2 list-group-item' key={post?.id}>
-                    <p className='mx-1 fs-1 w-75'>{post?.title}</p>
-                    <div className='w-25'>
-                      <button className='btn p-0 btn-warning m-1 w-100 disabled'>Edit</button>
-                      <button onClick={() => {
-                        deleteArticle(post?.id)
-                      }} className='btn p-0 btn-danger m-1 w-100'>X</button>
-                    </div>
-                    
+                  <li className='list-group-item' key={post?.id}>
+                    <UserArticle post={post} deleteArticle={deleteArticle} />
                   </li>
                 )
               })}

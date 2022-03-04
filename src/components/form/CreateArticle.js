@@ -50,7 +50,7 @@ function CreateArticle({redirect}) {
       <form className='w-100'>
           <p className='display-6 text-center'>Create an article</p>
         <div className="mb-3">
-          <input type="text" placeholder='Add title'  maxlength="60" className="form-control" id="inputTitle" value={title} onChange={(e)=>setTitle(e.target.value) } />
+          <input type="text" placeholder='Add title'  maxLength="60" className="form-control" id="inputTitle" value={title} onChange={(e)=>setTitle(e.target.value) } />
         </div>
         <div className="mb-3">
           <textarea className="form-control" placeholder='Start writing...' id="textareaContent" value={article} onChange={(e)=>setArticle(e.target.value) }  />
