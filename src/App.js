@@ -4,13 +4,9 @@ import SingleArticle from "./route/SingleArticle";
 import Dashboard from "./route/Dashboard";
 import LoginPage from "./route/LoginPage";
 import Home from "./route/Home";
-import { useContext } from "react";
-import { siteContext } from "./context/AppContext";
 import ErrorPage from "./route/ErrorPage";
 
 function App() {
-
-  const {allArticles} = useContext(siteContext)
 
   return (
     

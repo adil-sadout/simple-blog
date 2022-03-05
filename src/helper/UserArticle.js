@@ -3,9 +3,10 @@ import Modal from 'react-bootstrap/Modal'
 import {updateDoc, doc} from "firebase/firestore"
 import {siteContext} from "../context/AppContext"
 
+
 function UserArticle({post, deleteArticle}) {
 
-    const{db, allArticles, setAllArticles, user} = useContext(siteContext)
+    const{db, allArticles, setAllArticles} = useContext(siteContext)
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -63,7 +64,7 @@ function UserArticle({post, deleteArticle}) {
                             updatePost()
                             handleClose()
                           }}>
-                            Save Changes
+                            Save Changes  
                           </button>
                         </Modal.Footer>
                       </Modal>

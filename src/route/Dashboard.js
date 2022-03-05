@@ -1,9 +1,9 @@
-import {useContext, useEffect, useState} from 'react';
+import {useContext, useEffect} from 'react';
 import {siteContext} from "../context/AppContext";
 import {Navigate, useNavigate} from "react-router-dom"
 import CreateArticle from "../components/form/CreateArticle";
 import { doc, deleteDoc  } from 'firebase/firestore';
-import UserArticle from "./UserArticle"
+import UserArticle from "../helper/UserArticle"
 
 function Dashboard() {
   const {user, allArticles, setAllArticles, userArticles, setUserArticles, db} = useContext(siteContext);
