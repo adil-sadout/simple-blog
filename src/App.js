@@ -23,7 +23,7 @@ function App() {
         
 
         <Routes>
-
+          
           <Route path="/" element={<Home />} />
           <Route path="/auth" element={<LoginPage />} />
           <Route path="/dashboard" element={<Dashboard />} />

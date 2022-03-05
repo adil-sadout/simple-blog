@@ -12,6 +12,7 @@ function CreateArticle({redirect}) {
     
     const createPost = async (e)=>{
       const newID = uuidv4();
+      if(title !== "" && article !==""){
         try{
 
           e.preventDefault();
@@ -40,6 +41,11 @@ function CreateArticle({redirect}) {
         }catch(err){
           console.log(err)
         }
+      }else{
+        alert("Please fill in the title and content before creating your article")
+      }
+
+        
         
         
     }
@@ -50,10 +56,10 @@ function CreateArticle({redirect}) {
       <form className='w-100'>
           <p className='display-6 text-center'>Create an article</p>
         <div className="mb-3">
-          <input type="text" placeholder='Add title'  maxLength="60" className="form-control" id="inputTitle" value={title} onChange={(e)=>setTitle(e.target.value) } />
+          <input type="text" placeholder='Add title'  maxLength="60" className="form-control" required id="inputTitle" value={title} onChange={(e)=>setTitle(e.target.value) } />
         </div>
         <div className="mb-3">
-          <textarea className="form-control" placeholder='Start writing...' id="textareaContent" value={article} onChange={(e)=>setArticle(e.target.value) }  />
+          <textarea className="form-control" placeholder='Start writing...' id="textareaContent" required value={article} onChange={(e)=>setArticle(e.target.value) }  />
         </div>
         <button onClick={createPost} type="submit" className="btn btn-success">Create Article</button>
       </form>

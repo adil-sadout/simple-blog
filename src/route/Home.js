@@ -22,7 +22,7 @@ function Home() {
             (allArticles.length !==0) ?
             allArticles.map(post =>{
               return (
-                <div className='col-md-5 bg-light border py-3' key={post?.id}>
+                <div className='col-md-5 bg-light border rounded p-4' key={post?.id}>
                   <p className='lead'>By: {post?.author.email}</p>
                   <p className='h4 text-truncate'>{post?.title}</p>
                   <Link className='text-muted text-decoration-none' to={`/post/${post?.id}`}>Read Article</Link>
